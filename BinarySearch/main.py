@@ -23,7 +23,7 @@ Space complexity:
 O(1)
 """
 
-def binary_search(array, target):
+def binary_search(array: list[int], target: int) -> int | None:
     low = 0
     high = len(array) - 1
 
@@ -37,9 +37,12 @@ def binary_search(array, target):
             high = mid - 1
     return None
 
-my_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
-print(binary_search(my_array, 15))
-print(binary_search(my_array, 7))
-print(binary_search(my_array, 99))
-print(binary_search(my_array, -1))
+def main() -> None:
+    arr = [1, 3, 5, 7, 9, 11, 13, 15, 18]
+    target = 15
+    print(f"Binary search result: {binary_search(arr, target)}")
+
+
+if __name__ == '__main__':
+    main()

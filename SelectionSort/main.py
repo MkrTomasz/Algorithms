@@ -1,21 +1,41 @@
-def get_smallest(arr):
-    smallest = arr[0]
-    smallest_index = 0
-    for i in range(1, len(arr)):
-        if arr[i] < smallest:
-            smallest = arr[i]
-            smallest_index = i
-    return smallest_index
+"""
+Selection Sort is a simple, comparison-based sorting algorithm.
+In Python, it is usually implemented using nested loops and
+in-place element swapping.
+
+The algorithm divides the list into a sorted and an unsorted part.
+It repeatedly selects the smallest element from the unsorted part
+and swaps it with the first element of that part.
+
+With each iteration, the sorted portion of the list grows,
+while the unsorted portion shrinks.
+
+Selection Sort performs the same number of comparisons regardless
+of the initial order of elements.
+
+Time complexity:
+- Best-case: O(n^2)
+- Average-case: O(n^2)
+- Worst-case: O(n^2)
+
+Space complexity: O(1)
+"""
 
 
-def selection_sort(arr):
-    new_arr = []
-    for i in range(len(arr)):
-        smallest_index = get_smallest(arr)
-        new_arr.append(arr.pop(smallest_index))
-    return new_arr
+def selection_sort(arr: list[int]) -> list[int]:
+    n = len(arr)
+    for i in range(n - 1):
+        min_index = i
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_index]:
+                min_index = j
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+    return arr
 
 
-array_to_be_sorted = [3, 5, 4, 2, 1]
+def main() -> None:
+    arr = [64, 25, 12, 22, 11]
+    print(f"Selection sort result: {selection_sort(arr)}")
 
-print(selection_sort(array_to_be_sorted))
+if __name__ == "__main__":
+    main()
